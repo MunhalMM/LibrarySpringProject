@@ -1,10 +1,12 @@
 package org.telran.library.project.repository;
 
+import org.springframework.stereotype.Repository;
 import org.telran.library.project.model.Book;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class BookRepositoryImpl implements BookRepository {
 
     private List<Book> bookList = new ArrayList<>();

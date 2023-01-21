@@ -1,5 +1,6 @@
 package org.telran.library.project.repository;
 
+import org.springframework.stereotype.Repository;
 import org.telran.library.project.model.Book;
 import org.telran.library.project.model.User;
 
@@ -8,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Repository
 public class HomeRepositoryImpl implements HomeRepository {
     private Map<User, List<Book>> homeBookList = new HashMap<>();
 

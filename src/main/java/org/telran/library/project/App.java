@@ -1,17 +1,11 @@
 package org.telran.library.project;
 
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.telran.library.project.configuration.MyConfig;
 import org.telran.library.project.controller.BookController;
 import org.telran.library.project.controller.OrderController;
 import org.telran.library.project.model.Book;
 import org.telran.library.project.model.User;
-import org.telran.library.project.repository.BookRepository;
-import org.telran.library.project.repository.BookRepositoryImpl;
-import org.telran.library.project.repository.HomeRepository;
-import org.telran.library.project.repository.HomeRepositoryImpl;
-import org.telran.library.project.service.BookService;
-import org.telran.library.project.service.BookServiceImpl;
-import org.telran.library.project.service.OrderService;
-import org.telran.library.project.service.OrderServiceImpl;
 
 import java.util.List;
 import java.util.Scanner;
@@ -19,13 +13,10 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) {
 
-        BookRepository bookRepository = new BookRepositoryImpl();
-        BookService bookService = new BookServiceImpl(bookRepository);
-        BookController bookController = new BookController(bookService);
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(MyConfig.class);
 
-        HomeRepository homeRepository = new HomeRepositoryImpl();
-        OrderService orderService = new OrderServiceImpl(homeRepository);
-        OrderController orderController = new OrderController(orderService);
+        BookController bookController = context.getBean(BookController.class);
+        OrderController orderController = context.getBean(OrderController.class);
 
         List<Book> bookList = bookController.getAll();
         bookList.forEach(System.out::println);
@@ -63,5 +54,6 @@ public class App {
             bookList.forEach(System.out::println);
         }
         sc.close();
+        context.close();
     }
 }

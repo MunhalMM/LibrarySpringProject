@@ -1,5 +1,8 @@
 package org.telran.library.project.model;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Book {
 
     private int id;
