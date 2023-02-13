@@ -7,6 +7,8 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="libraryspringproject" />
+        <module name="LibrarySpring" />
+        <module name="libraryspringproject1" />
         <module name="librarymavenproject" />
       </profile>
     </annotationProcessing>
